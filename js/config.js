@@ -1,0 +1,14 @@
+// ============================================================
+// CONFIG.JS — REAL ACTION BIBLE CAMP 2026 SG 1
+// ============================================================
+// LANGKAH 1: Setelah deploy Google Apps Script, tempel URL-nya di bawah ini.
+// Contoh: 'https://script.google.com/macros/s/AKfycb.../exec'
+// ============================================================
+
+const CONFIG = {
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbxr1Ocd1SwUxAfCoJ7Rdz8IuLZ4PQbG2SNwZkQ7wKVvcRSqP50YGwv02UPLzzmJ8cPWhQ/exec',
+
+  // ID folder Google Drive tempat upload gambar
+  // Buka Google Drive → buat folder → klik kanan → Copy link → ambil ID-nya
+  DRIVE_FOLDER_ID: '1qnOqSlA6vWoZ4c-ufjbzl_Lmsb2_dcqG?hl=ID',
+};

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard — RABC 2026 SG1</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="admin-body">
+
+<!-- ADMIN HEADER -->
+<header class="admin-header">
+  <div class="admin-header-inner">
+    <div class="admin-logo">
+      <i class="fa-solid fa-fire"></i>
+      <div>
+        <div class="admin-title">REAL ACTION BIBLE CAMP 2026 SG 1</div>
+        <div class="admin-subtitle">Dashboard Admin PKTB</div>
+      </div>
+    </div>
+    <div class="admin-actions">
+      <button class="btn-refresh" onclick="loadAllData()">
+        <i class="fa-solid fa-rotate-right"></i> Refresh Data
+      </button>
+      <a href="index.html" class="btn-back">
+        <i class="fa-solid fa-arrow-left"></i> Ke Website Peserta
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- SUMMARY STATS -->
+<div class="admin-stats" id="adminStats">
+  <div class="stat-card">
+    <div class="stat-num" id="stat-total">9</div>
+    <div class="stat-label">Total Peserta</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="stat-filled" style="color:var(--orange)">0</div>
+    <div class="stat-label">Sudah Mengisi</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="stat-empty" style="color:var(--maroon)">9</div>
+    <div class="stat-label">Belum Mengisi</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="stat-complete" style="color:#2E7D32">0</div>
+    <div class="stat-label">Lengkap (K1+K2)</div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="admin-filter">
+  <div class="filter-group">
+    <label>Filter Status:</label>
+    <select id="filterStatus" onchange="applyFilter()">
+      <option value="all">Semua</option>
+      <option value="not-started">Belum Mengisi</option>
+      <option value="in-progress">Dalam Proses</option>
+      <option value="completed">Lengkap</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Filter Lingkungan:</label>
+    <select id="filterLingkungan" onchange="applyFilter()">
+      <option value="all">Semua</option>
+      <option value="KTB">KTB</option>
+      <option value="Keluarga">Keluarga</option>
+      <option value="Sekolah">Sekolah</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <input type="text" id="searchInput" placeholder="Cari nama peserta..." oninput="applyFilter()" style="padding:8px 12px;border:1.5px solid var(--gray-mid);border-radius:8px;font-family:inherit;font-size:0.88rem;"/>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="admin-main">
+  <div id="loadingMsg" class="loading-msg">
+    <i class="fa-solid fa-spinner fa-spin"></i> Memuat data dari Google Sheet...
+  </div>
+  <div id="noGasMsg" class="no-gas-msg hidden">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <strong>Google Apps Script belum terhubung.</strong><br/>
+    Buka <code>js/config.js</code> dan isi GAS_URL terlebih dahulu, lalu refresh halaman ini.
+  </div>
+  <div id="participantTable" class="participant-table hidden"></div>
+</main>
+
+<!-- DETAIL MODAL -->
+<div id="detailModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeDetail()"></div>
+  <div class="modal-content admin-modal">
+    <button class="modal-close" onclick="closeDetail()"><i class="fa-solid fa-xmark"></i></button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
