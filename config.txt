@@ -10,5 +10,5 @@ const CONFIG = {
 
   // ID folder Google Drive tempat upload gambar
   // Buka Google Drive → buat folder → klik kanan → Copy link → ambil ID-nya
-  DRIVE_FOLDER_ID: '1qnOqSlA6vWoZ4c-ufjbzl_Lmsb2_dcqG',
+  DRIVE_FOLDER_ID: '1qnOqSlA6vWoZ4c-ufjbzl_Lmsb2_dcqG?hl=ID',
 };
